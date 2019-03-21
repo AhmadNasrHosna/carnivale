@@ -1,0 +1,102 @@
+.products {
+  background: #323232;
+  color: #fff;
+
+  &__inner {
+    @mixin at Medium { display: flex }
+  }
+
+  .page-section {
+    &__title { @media (min-width: 960px) { max-width: 200px } }
+    &__description { @media (min-width: 960px) { max-width: 265px } }
+
+    &__description { margin-bottom: 5rem }
+  }
+  
+  &__details { 
+    flex-basis: 45%;
+    margin-bottom: 4.4rem;
+    @mixin at Medium { width: 45% } /* flexbox fallback */
+    @mixin at Medium { padding-right: 3em; margin-bottom: 0 }
+    @media (min-width: 960px) { padding-right: 0 }
+  }
+
+  &__previews { 
+    @mixin at Medium { width: 55% } /* flexbox fallback */
+    flex-basis: 55%;
+
+    @mixin at Medium {
+      margin-top: -40px;
+    }
+  }
+
+  .product {
+    position: relative;
+    &:first-child { margin-bottom: 6rem }
+
+    &__image {
+      position: relative;
+
+      svg {
+        fill: var(--color-1);
+        position: absolute;
+        left: 5px;
+        top: 20px;
+        z-index: 1;
+      }
+      
+      picture {
+        height: 250px;
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          object-position: 50% 45%;
+        }
+      }
+    }
+
+    &__details {
+      width: 100%;
+      @mixin at Medium { width: 72% }
+      background: var(--color-1);
+      padding: 1.3em 1.5em .9em;
+      bottom: -25px;
+      box-shadow: 0 50px 81px -28px #000;
+      @mixin center x;
+      bottom: -34px;
+      @mixin at Medium { bottom: -18px;   padding: 1.7em 2.5em 1.5em}
+      background: url(../../../assets/images/bg-3.jpg) no-repeat;
+      background-position: 44% 50%;
+      background-size: cover;
+    }
+
+    &__title {
+      @mixin font-size 1.35;
+      text-transform: uppercase;
+      letter-spacing: .3em;
+      margin-bottom: .9rem;
+      font-family: "adam.cg_proregular", sans-serif;
+      font-weight: normal;
+      line-height: 1.4;
+    }
+
+    &__overview {
+      @mixin font-size 1.75;
+      font-style: italic;
+      margin-bottom: 0;
+      font-family: "Crimson Text";
+      color: hsla(0, 0%, 100%, .6);
+      line-height: 1.2;
+    }
+  }
+}
+
+@supports (display: flex) {
+  .products {
+    &__details, &__previews { 
+      @mixin at Medium { width: auto } /* flexbox fallback */
+    }
+  }
+}

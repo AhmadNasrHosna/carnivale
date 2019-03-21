@@ -1,0 +1,84 @@
+.intro-hero {
+  width: 100%; height: 100%;
+  position: relative;
+
+  &__inner { 
+    position: relative;
+  }
+
+  &__background {
+    overflow: hidden;
+    height: 700px;
+    height: 100vh;
+
+    picture {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+
+      &::after {
+        transition: all 1000ms ease-in-out;
+        max-height: 1200px;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        user-select: none;
+        pointer-events: none;
+      }
+    }
+    
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: hsla(360, 76%, 66%, 0.25);
+      mix-blend-mode: luminosity;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    color: #fff;
+    padding: 1em;
+    z-index: 1;
+    
+    @mixin center y;
+
+    @media (max-height: 600px) { top: 60% }
+
+  }
+
+  &__subtitle {
+    color: var(--white) !important;
+    text-shadow: 0 1px hsla(0, 0%, 0%, .23);
+  }
+
+  &__title {
+    max-width: 800px;
+    margin: 2rem auto !important;
+    font-size: 4rem !important;
+    text-shadow: 0 2px hsla(0, 0%, 0%, .3);
+
+    @mixin at Medium {
+      font-size: 6.5rem !important;
+      margin: 4rem auto !important;
+
+    }
+  }
+
+  &__buttons {
+    button {
+      @mixin at xSmall { margin-top: 1rem }
+
+      @mixin at Small {
+        &:last-child {margin-inline-start: 1rem;}
+      }
+    }
+  }
+}

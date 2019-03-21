@@ -1,0 +1,67 @@
+.about {
+  background: #41403e url('../../../assets/images/bg-1.jpg') no-repeat;
+  color: #fff;
+  background-position: 100% 40%;
+  background-attachment: fixed;
+
+  &__inner {
+    @mixin at Medium {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: 2.5rem auto 33rem;
+      grid-column-gap: 6.4rem;
+    }
+
+    > * {
+      grid-column: 1 / 7;
+      @mixin at Medium { grid-column: 2 / 7 }
+      @media (min-width: 960px) { grid-column: 3 / 7 }
+    }
+  }
+
+  &__overview {
+    margin-bottom: 7.4rem;
+
+    @mixin at Medium {
+      width: calc(50% - 6rem); /* old browesers fallback */
+      margin-inline-start: 6rem;
+    }
+
+    grid-column: 7 / -1;
+    @mixin at Medium { grid-column: 7 / -2; margin-bottom: 0 }
+    @media (min-width: 960px) { grid-column: 7 / -3 }
+
+   
+  }
+
+  figure {
+    overflow: hidden;
+  }
+
+  .page-section {
+
+    &__subtitle {
+      grid-row: 1;
+    }
+
+    &__subtitle { white-space: nowrap }
+
+    &__description { margin: -.4rem 0 5rem }
+  }
+}
+
+
+@supports (display: grid) and (display: flex) {
+  .about {
+    &__overview {
+      width: auto;
+      margin-inline-start: 0;
+    }
+
+    figure {
+      margin-top: 4rem;
+      @mixin at Small { margin-top: 2rem }
+      overflow: initial;
+    }
+  }
+}

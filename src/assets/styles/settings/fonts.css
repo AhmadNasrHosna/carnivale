@@ -1,0 +1,25 @@
+/* Fonts */
+ @import '../stylesheets/adamcgpro';
+ @import '../stylesheets/randikademo';
+ @import '../stylesheets/inter';
+ @import '../stylesheets/reforma';
+
+/* 
+ font-family: 'Aref Ruqaa', serif;
+ font-family: 'Buenard', serif;
+ font-family: 'Cardo', serif;
+ font-family: 'Cormorant', serif;
+ font-family: 'David Libre', serif;
+ font-family: 'Gentium Book Basic', serif;
+ font-family: 'Goudy Bookletter 1911', serif;
+ font-family: 'IM Fell English', serif;
+ font-family: 'Linden Hill', serif;
+ font-family: 'Spectral', serif; */
+
+:root {
+  --primary-font: "Inter", system-ui, sans-serif;
+  --secondary-font: "adam.cg_proregular", sans-serif;
+}
+
+
+

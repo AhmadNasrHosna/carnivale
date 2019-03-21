@@ -1,0 +1,231 @@
+.site-footer {
+  background: #2b2a28;
+  color: hsl(0, 0%, 50%);
+  
+  .carnivale-logo { user-select: none }
+  
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+
+    > div {
+      
+      @mixin at Small {
+        display: flex;
+        align-items: center;
+      }
+
+      grid-column: 2 / -2;
+      @media (min-width: 960px) { grid-column: 3 / -3 }
+
+      > *:last-child { 
+        margin-inline-start: auto;
+        margin-top: 2.4rem;
+        @mixin at Medium { margin-top: 0 }
+      }
+
+      padding-inline: 7%; /* layout fallback */
+      @mixin at Small { padding-inline: 10% }
+
+      &:nth-of-type(1) { padding-block: 4em }
+      &:nth-of-type(2) { padding-block: 3em; @mixin at Medium { padding-block: 5em } }
+      &:nth-of-type(3) { padding-block: 1.95em }
+
+      &:nth-of-type(1), &:nth-of-type(2) { 
+        @mixin at Small {
+          flex-direction: column;
+
+          > *:last-child { margin-left: 0 }
+        }
+
+        @mixin at Medium {
+          flex-direction: row;
+          > *:last-child { margin-inline-start: auto }
+        }
+      }
+
+     }
+  }
+
+  &__newsletter {
+    h3 {
+      color: var(--white);
+      margin-inline-end: 0;
+      @mixin at Medium { margin-inline-end: 7.3rem }
+      font-family: "Crimson Text";
+      font-weight: normal;
+      font-style: italic;
+      @mixin font-size 3.4;
+      line-height: 1;
+      margin-bottom: 0;
+
+    }
+
+    &__form {
+      width: 100%;
+      @mixin at Medium { width: auto }
+      flex-grow: 1;
+      position: relative;
+      outline: 0;
+
+      input[type=email] {
+        width: 100%;
+        border: 2px solid hsl(40, 1%, 39%);
+        background: transparent;
+        padding: .75em 1.8em;
+        font-size: 15px;
+        font-style: italic;
+        color: hsl(40, 1%, 56%);
+        outline: 0;
+        transition: all 300ms ease;
+        text-align: left;
+        
+        &::placeholder { color: inherit }
+      }
+
+      button[type=submit] {
+        position: absolute;
+        top: 0; right: 0;
+        color: #fff;
+        width: 60px;
+        height: 100%;
+        transition: all 200ms ease;
+
+        svg {
+          fill: var(--color-1);
+          transition: all 200ms ease;
+        }
+
+        &:focus { 
+          border: 2px solid var(--white);
+        }
+      }
+
+      &:focus-within {
+        input[type=email] {
+          border-color: var(--color-1);
+        }
+
+        button[type=submit] {
+          background: var(--color-1);
+          outline: 0;
+          svg { fill: var(--white) }
+        }
+      }
+    }
+  }
+
+  &__navbar {
+    li {
+      a {
+        font-family: var(--secondary-font);
+        @mixin font-size 1.3;
+        letter-spacing: .15em;
+        transition: all 300ms ease;
+        position: relative;
+
+        &::after {
+          content: '';
+          display: block;
+          width: 100%; height: 2px;
+          background: hsl(0, 0%, 80%);
+          position: absolute;
+          left: 0; bottom: -.8em;
+          transform-origin: 50% 0;
+          transform: scale(0);
+          transition: all 300ms ease;
+          opacity: 0;
+        }
+
+        &:hover {
+          color: hsl(0, 0%, 80%);
+
+          @mixin at Medium {
+            &::after { 
+              opacity: 1;
+              transform: scale(1);
+            }
+          }
+        }
+
+        &:focus {
+          outline: 2px solid hsl(0, 0%, 50%);
+          outline-offset: 8px;
+        }
+      }
+
+      &:not(:last-child) { 
+        @mixin at xSmall { margin-bottom: 1rem }
+
+        a { 
+          @mixin at Small { margin-inline-end: 3.5rem }
+          @mixin at Medium { margin-inline-end: 7rem }
+        } 
+      }
+    }
+    
+  }
+
+  &__copy {
+    @mixin font-size 1.4;
+
+    .sponsor { 
+      display: inline-flex;
+      margin-top: 0.4rem !important;
+      @mixin at Medium { margin-top: 0 !important }
+    }
+
+    .cloud-icon {
+      width: 11px; height: 11px;
+      background: #2b2a28;
+      border-radius: 50%;
+      position: relative;
+      margin-inline-start: 1rem;
+      top: 6px;
+      box-shadow: 0 0 0 2px var(--color-1);
+
+      &::after {
+        content: "";
+        display: block;
+        width: 100%; height: 100%;
+        background: inherit;
+        border-radius: 50%;
+        position: absolute;
+        top: 0; left: 0;
+        z-index: 9;
+      }
+
+      span {
+        display: block;
+        width: 10px;
+        height: 6px;
+        background: #2b2a28;
+        border-radius: 10px;
+        position: absolute;
+        bottom: 0;
+        left: 5px;
+        box-shadow: 0 0 0 2px var(--color-1);
+      }
+    }
+  }
+
+
+
+  &__divider {
+    grid-column: 1 / -1;
+    width: 100%; height: 1px;
+    background: hsl(60, 2%, 24%);
+  }
+}
+
+@supports (display: grid) and (display: flex) {
+  .site-footer {
+    &__wrapper {
+      > div {
+        padding-inline: 0;
+        @mixin at Small { padding-inline: 0 }
+      }
+    }
+  }
+  
+}
