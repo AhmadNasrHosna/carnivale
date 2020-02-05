@@ -9,7 +9,7 @@
     "browser-sync": "^2.26.3",
     "cssnano": "^4.1.8",
     "del": "^3.0.0",
-    "gulp": "^4.0.0",
+    "gulp": "^4.0.2",
     "gulp-imagemin": "^5.0.3",
     "gulp-inject": "^5.0.2",
     "gulp-load-plugins": "^1.5.0",
